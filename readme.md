@@ -21,12 +21,12 @@ In order to start this project, clone this project from git. Run below commands 
 ## Running the program in local mode
 After building the application you can run the service by performing the following steps:
 
-1. Start the application
+1. Start the application. Run below command in directory conatining serverless.yml
  - sls offline start
 
 2) Call the 'Create Customer'. Customer needs to be created before calling Retrieve/Update/Delete Apis.
 
-3) Generate access_token for above customer using below command. (Note: Replace below username & password of above created customer)
+3) Generate access_token for above customer using below command. (Note: Replace below username & password by above created customer)
 
 curl -X POST -H "Content-Type: application/json" -d '{
   "client_id": "3UEEwJGeERXeaOAw8WMhIFD2KRJMk5U7",
@@ -44,11 +44,14 @@ curl -X POST -H "Content-Type: application/json" -d '{
 
 ##Test Sample
 **Request**
+
 URL
 http://localhost:5100/customers/auth0|5b666ec62e0e7404788863d6
 
 Headers
+
 Authorization: Bearer access_token
+
 **Response**
 {
     "firstName": "Abc",
