@@ -24,9 +24,12 @@ After building the application you can run the service by performing the followi
 1. Start the application. Run below command in directory conatining serverless.yml
  - sls offline start
 
-2) Call the 'Create Customer'. Customer needs to be created before calling Retrieve/Update/Delete Apis.
+2) Call the 'Create Customer' api. Customer needs to be created before calling Retrieve/Update/Delete Apis.
 
-3) Generate access_token for above customer using below command. (Note: Replace below username & password by above created customer)
+URL
+http://localhost:5100/customers
+
+3) Get access_token for above customer using below command. (Note: Replace below username & password by above created customer)
 
 curl -X POST -H "Content-Type: application/json" -d '{
   "client_id": "3UEEwJGeERXeaOAw8WMhIFD2KRJMk5U7",

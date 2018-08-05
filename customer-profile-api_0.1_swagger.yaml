@@ -143,12 +143,3 @@ paths:
               schema:
                 type: string
               examples: {}
-components:
-  securitySchemes:
-    oauth2:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: 'http://yourauthurl.com'
-          scopes:
-            scope_name: Enter your scopes here
