@@ -1,0 +1,131 @@
+service: ${self:custom.service.name}
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage:  ${opt:stage, self:custom.defaultStage}
+  region: ${opt:region, self:custom.defaultRegion}
+
+  environment:
+    NODE_ENV: ${opt:stage, self:custom.defaultStage}
+    LOG_LEVEL: info
+    region: ${opt:region, self:custom.defaultRegion}
+    auth0_clientId: AUTH0_CLIENT_ID
+    auth0_clientSecret: AUTH0_CLIENT_SECRET
+# you can overwrite defaults here
+#  stage: dev
+#  region: us-east-1
+
+custom:
+  defaultStage: localhost
+  defaultRegion: ap-southeast-2
+  service:
+    name: ${file(./package.json):name}
+    version: ${file(./package.json):version}
+
+  serverless-offline:
+    port: 5100
+
+package:
+   exclude:
+    - "*"
+    - "*/**"
+   include:
+    - config/**
+    - lib/**
+    - src/**
+    - handler.js
+    - package.json
+    - serverless.yml
+
+functions:
+  authorizer:
+      handler: handler.authorize
+
+  getCustomer:
+      handler: handler.retrieve-customer
+      events:
+        - http:
+            path: /customers/{customerId}
+            method: get
+            cors: true
+            request:
+              parameters:
+                paths:
+                  customerId: true
+            authorizer:
+              name: authorizer
+              resultTtlInSeconds: 0
+              type: request
+              identitySource: method.request.header.Authorization
+
+  putCustomer:
+      handler: handler.update-customer
+      events:
+        - http:
+            path: /customers/{customerId}
+            method: put
+            cors: true
+            request:
+              parameters:
+                paths:
+                  customerId: true
+            authorizer:
+              name: authorizer
+              resultTtlInSeconds: 0
+              type: request
+              identitySource: method.request.header.Authorization
+
+  deleteCustomer:
+        handler: handler.delete-customer
+        events:
+          - http:
+              path: /customers/{customerId}
+              method: delete
+              cors: true
+              request:
+                parameters:
+                  paths:
+                    customerId: true
+              authorizer:
+                name: authorizer
+                resultTtlInSeconds: 0
+                type: request
+                identitySource: method.request.header.Authorization
+
+  postCustomer:
+      handler: handler.create-customer
+      events:
+        - http:
+            path: /customers
+            method: post
+            cors: true
+            request:
+              parameters:
+                paths:
+                  customerId: true
+
+resources:
+  Resources:
+    ApiGatewayRestApi:
+      Type: AWS::ApiGateway::RestApi
+      Properties:
+        Name: sops-commerce-api-${self:service}-${self:provider.stage}
+
+    GatewayResponse:
+      Type: AWS::ApiGateway::GatewayResponse
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+        ResponseType: ACCESS_DENIED
+        RestApiId:
+          Ref: 'ApiGatewayRestApi'
+
+
+plugins:
+  - serverless-offline
+  - serverless-mocha-plugin

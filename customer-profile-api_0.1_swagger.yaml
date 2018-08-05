@@ -1,0 +1,154 @@
+openapi: 3.0.1
+info:
+  title: Customer Profile
+  description: Create/Update/Retrieve/Delete customer with oauth2.0 authentication
+  version: '0.1'
+servers:
+  - url: 'http://localhost:5100'
+paths:
+  /customers:
+    post:
+      description: Auto generated using Swagger Inspector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                password:
+                  type: string
+                email:
+                  type: string
+                homeAddress:
+                  type: object
+                  properties:
+                    country:
+                      type: string
+                    city:
+                      type: string
+                    postcode:
+                      type: string
+                    street1:
+                      type: string
+                    street2:
+                      type: string
+            examples:
+              '0':
+                value: "{\n\t\"firstName\": \"Abc\",\n\t\"lastName\": \"Xyz\",\n\t\"email\": \"abc.xyz@gmail.com\",\n\t\"password\": \"q1w2e3r4@123\",\n\t\"homeAddress\": {\n\t\t\"street1\": \"Unit 16\",\n\t\t\"street2\": \"53 Street Name\",\n\t\t\"city\": \"City Name\",\n\t\t\"country\": \"Australia\",\n\t\t\"postcode\": \"1111\"\n\t}\n}"
+              '1':
+                value: "{\n\t\"firstName\": \"Abc\",\n\t\"lastName\": \"Xyz\",\n\t\"email\": \"abc.xyz@gmail.com\",\n\t\"password\": \"q1w2e3r4@123\",\n\t\"homeAddress\": {\n\t\t\"street1\": \"Unit 16\",\n\t\t\"street2\": \"53 Street Name\",\n\t\t\"city\": \"City Name\",\n\t\t\"country\": \"Australia\",\n\t\t\"postcode\": \"1111\"\n\t}\n}"
+              '2':
+                value: "{\n\t\"firstName\": \"Abc\",\n\t\"lastName\": \"Xyz\",\n\t\"email\": \"abc.xyz@gmail.com\",\n\t\"homeAddress\": {\n\t\t\"street1\": \"Unit 16\",\n\t\t\"street2\": \"53 Street Name\",\n\t\t\"city\": \"City Name\",\n\t\t\"country\": \"Australia\",\n\t\t\"postcode\": \"1111\"\n\t}\n}"
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+        '400':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+        '409':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+  /customers/auth0|5b669df52e0e74047888642f:
+    get:
+      description: Auto generated using Swagger Inspector
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+        '403':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+    put:
+      description: Auto generated using Swagger Inspector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dateOfBirth:
+                  type: string
+                homeAddress:
+                  type: object
+                  properties:
+                    country:
+                      type: string
+                    city:
+                      type: string
+                    postcode:
+                      type: string
+                    street1:
+                      type: string
+                    street2:
+                      type: string
+            examples:
+              '0':
+                value: "{\n\t\"dateOfBirth\": \"01-Jan-2010\",\n\t\"homeAddress\": {\n\t\t\"street1\": \"Unit 18\",\n\t\t\"street2\": \"45 Street Name\",\n\t\t\"city\": \"City Name\",\n\t\t\"country\": \"Australia\",\n\t\t\"postcode\": \"1111\"\n\t}\n}"
+              '1':
+                value: "{\n\t\"dateOfBirth\": \"01-Jan-2010\",\n\t\"homeAddress\": {\n\t\t\"street1\": \"Unit 18\",\n\t\t\"street2\": \"45 Street Name\",\n\t\t\"city\": \"City Name\",\n\t\t\"country\": \"Australia\",\n\t\t\"postcode\": \"1111\"\n\t}\n}"
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+        '403':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+    delete:
+      description: Auto generated using Swagger Inspector
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+        '403':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'http://yourauthurl.com'
+          scopes:
+            scope_name: Enter your scopes here

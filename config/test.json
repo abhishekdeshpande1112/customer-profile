@@ -1,0 +1,4 @@
+{
+  "baseUrl":"https://test.au.auth0.com",
+  "audience": "test_client_id"
+}

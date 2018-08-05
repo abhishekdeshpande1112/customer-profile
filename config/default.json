@@ -1,0 +1,14 @@
+{
+  "baseUrl":"https://abdev.au.auth0.com",
+  "auth0Paths": {
+    "customers": "/api/v2/users",
+    "authorize" : "/oauth/token",
+    "jwks": "/.well-known/jwks.json"
+  },
+  "connections": {
+    "usernamePasswords": "Username-Password-Authentication"
+  },
+  "audience": ["https://abdev.au.auth0.com/api/v2/", "qantasaustralia"],
+  "grantTypes": ["client_credentials","password"],
+  "MACHINE_ACCESS_TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IlJEZzFSa1k1T0RNNFFUZzFORFpCT0RjNU16RXpOalJCUmtZMU5EbEVNa1ZFTVRZME16VkROZyJ9.eyJpc3MiOiJodHRwczovL2FiZGV2LmF1LmF1dGgwLmNvbS8iLCJzdWIiOiJDbTJDQ2hyY3QyMHBKRTd1MW1mN2JsSEpoMDFNZXZOaEBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9hYmRldi5hdS5hdXRoMC5jb20vYXBpL3YyLyIsImlhdCI6MTUzMzQ1NzkyOSwiZXhwIjoxNTMzODAzNDk0LCJhenAiOiJDbTJDQ2hyY3QyMHBKRTd1MW1mN2JsSEpoMDFNZXZOaCIsInNjb3BlIjoicmVhZDp1c2VycyB1cGRhdGU6dXNlcnMgZGVsZXRlOnVzZXJzIGNyZWF0ZTp1c2VycyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.lL8_ceE5s36zZUa1kQs_ejcj2mCWYfKiLD19tBA_sdtMEnm7DiJGDGW0NqeEJa9sb2udbzpJF6uLKLjgPlxxd4fZBoxc-KXpHEJr2MLFIlQCTXLjYM25w1IoiMT5z27Qkt-KlWxMrnLvRtGcXSdVd-sSHLz2dXY40DsXMRcKV5dZ4IbGX0iUgeRf5wFlEE9wE5lc6GXL2uneW1AmX695YIvGgqEEeczudMia89Q5602Ey2YVwX98hiJRDeWBGPf7N7uqeMnKXweyQOvGzbhk9nIBSHVCOLr-AjpEMlCMY8-r69O1FhteE9T5tizwa3yLsyOdL8WiPWmDyG_-AZqR7A"
+}
